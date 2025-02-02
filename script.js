@@ -8,6 +8,13 @@ let wind = document.querySelector(".wind");
 
 
     console.log(data)
+
+    cityName.innerHTML = data.name;
+    temp.innerHTML = Math.round(data.main.temp) + "°C";
+    humidity.innerHTML = data.main.humidity + "%";
+    wind.innerHTML = data.wind.speed.toFixed(1) + " km/h";
+
+
 }
 
 checkWeather();
