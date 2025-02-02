@@ -5,14 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather App</title>
     <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
-
 </head>
-<body>
-    <div class="weather-card">
-        <div class="search">
-            <input placeholder="Enter City name" spellcheck="false" type="text">
-            <button>
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="black" width="24" height="24">
+<body class="bg-gradient-to-r from-blue-400 to-purple-500 min-h-screen flex items-center justify-center">
+    <!-- Weather Card -->
+    <div class="weather-card bg-white rounded-lg shadow-2xl p-8 max-w-md w-full">
+        <!-- Search Section -->
+        <div class="search flex items-center gap-4">
+            <!-- Input Field -->
+            <input
+                class="w-full p-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-blue-500 transition-colors"
+                placeholder="Enter City name"
+                spellcheck="false"
+                type="text"
+            />
+            <!-- Search Button -->
+            <button class="p-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                     <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
                 </svg>
             </button>
