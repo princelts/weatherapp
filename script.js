@@ -1,5 +1,6 @@
 const apiKey = "933cc632626a501506be3dfd6e26f221";
 const apiUrl = "https://api.openweathermap.org/data/2.5/weather?units=metric&q=";
+
 const searchBox = document.querySelector(".search input");
 const searchBtn = document.querySelector(".search button")
 
@@ -23,7 +24,13 @@ async function checkWeather(cityName) {
 
 
 searchBtn.addEventListener("click", ()=>{
-    checkWeather(searchBox.value);
-})
+    checkWeather(searchBox.value.trim());
+});
+
+searchBox.addEventListener("keypress", (event) => {
+    if (event.key === "Enter") {
+        checkWeather(searchBox.value.trim());
+    }
+});
 
 checkWeather("Amsterdam");
