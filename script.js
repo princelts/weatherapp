@@ -11,6 +11,7 @@ const humidity = document.querySelector(".humidity");
 const wind = document.querySelector(".wind");
 
 async function checkWeather(cityName) {
+    try {
     const response = await fetch(apiUrl + cityName + `&appid=${apiKey}`)
     let data = await response.json();
 
@@ -42,6 +43,15 @@ async function checkWeather(cityName) {
         '<path d="M 24 6 C 18.827227 6 14.68712 10.016099 14.189453 15.0625 C 10.215542 15.235802 7 18.485416 7 22.5 C 7 26.624501 10.375499 30 14.5 30 L 33.5 30 C 37.624501 30 41 26.624501 41 22.5 C 41 18.485416 37.784458 15.235802 33.810547 15.0625 C 33.31288 10.016099 29.172773 6 24 6 z M 24 9 C 27.883178 9 31 12.116822 31 16 L 31 16.5 A 1.50015 1.50015 0 0 0 32.5 18 L 33.5 18 C 36.003499 18 38 19.996501 38 22.5 C 38 25.003499 36.003499 27 33.5 27 L 14.5 27 C 11.996501 27 10 25.003499 10 22.5 C 10 19.996501 11.996501 18 14.5 18 L 15.5 18 A 1.50015 1.50015 0 0 0 17 16.5 L 17 16 C 17 12.116822 20.116822 9 24 9 z M 9.5 33 A 1.50015 1.50015 0 1 0 9.5 36 L 38.5 36 A 1.50015 1.50015 0 1 0 38.5 33 L 9.5 33 z M 15.5 39 A 1.50015 1.50015 0 1 0 15.5 42 L 32.5 42 A 1.50015 1.50015 0 1 0 32.5 39 L 15.5 39 z"></path>';
     }
 
+
+
+    } catch (error) {
+        console.error("Error fetching weather data:", error);
+        city.innerHTML = "City not found";
+        temp.innerHTML = "N/A";
+        humidity.innerHTML = "N/A";
+        wind.innerHTML = "N/A";
+    }
 }
 
 
@@ -50,7 +60,7 @@ searchBtn.addEventListener("click", ()=>{
 });
 
 searchBox.addEventListener("keypress", (event) => {
-    if (event.key === "Enter") {
+    if (event.key === "Enter" && searchBox.value.trim() !== "") {
         checkWeather(searchBox.value.trim());
     }
 });
